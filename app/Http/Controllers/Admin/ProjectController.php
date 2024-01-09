@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Validation\Rule;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -24,8 +25,9 @@ class ProjectController extends Controller
 
     public function create()
     {
+        $types = Type::all();
 
-        return view('admin.projects.create');
+        return view('admin.projects.create', compact('types'));
     }
 
     public function store(Request $request)
@@ -35,12 +37,13 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|max:255|',
             'thumb' => 'required|url',
-            'description' => 'required'
+            'description' => 'required',
+            'type_id' => 'nullable|exists:types,id'
         ]);
 
         $newProject = Project::create($data);
 
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index', $newProject);
     }
 
     public function edit(Project $project)

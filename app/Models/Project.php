@@ -13,7 +13,7 @@ class Project extends Model
         "title",
         "thumb",
         "description",
-        'type_id'
+        "type_id"
     ];
 
     public function type()
