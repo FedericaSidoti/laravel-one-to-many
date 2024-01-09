@@ -6,6 +6,7 @@
             <img src="{{$project->thumb}}">
             <h2>{{$project->title}}</h2>
             <p>{{$project->description}}</p>
+            <p>{{optional($project->type)->name}}</p>
         </div>
     </div>
 @endsection
