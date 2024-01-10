@@ -8,7 +8,7 @@
 
     <div class="container">
         <h1 class="p-5 text-light">Homepage</h1>
-        <div class="row">
+        <div class="row justify-content-center">
         @forelse ($projects as $project)
         <div class="col-4 mb-4">
             <div class="card">
